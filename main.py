@@ -22,9 +22,9 @@ class University(QDialog):
             response.setStandardButtons(QMessageBox.Ok)
 
             row = self.table.rowCount()+saved.rowcount
-            self.table.item(row, 0, QTableWidgetItem(name))
-            self.table.item(row, 1, QTableWidgetItem(department))
-            self.table.item(row, 2, QTableWidgetItem(f"{salary}"))
+            self.table.setItem(row, 0, QTableWidgetItem(name))
+            self.table.setItem(row, 1, QTableWidgetItem(department))
+            self.table.setItem(row, 2, QTableWidgetItem(f"{salary}"))
 
             self.nameInput.setText("")
             self.salaryInput.setValue(0)
@@ -57,7 +57,7 @@ class University(QDialog):
         f.addRow(QLabel("Salary"), self.salaryInput)
 
         self.form.setLayout(f)
-        self.buttonBox = QDialogButtonBox(
+        self.buttons = QDialogButtonBox(
             QDialogButtonBox.Save | QDialogButtonBox.Close)
 
     def index(self):
@@ -88,21 +88,21 @@ class University(QDialog):
         self.departmentOptions = None
         self.salaryInput = None
         self.table = None
-        self.buttonBox = None
+        self.buttons = None
         self.nameInput = None
         self.form = None
         self.title = f"University instructors"
         self.setWindowTitle(self.title)
 
         self.create()
-        self.buttonBox.accepted.connect(self.store)
-        self.buttonBox.rejected.connect(self.reject)
+        self.buttons.accepted.connect(self.store)
+        self.buttons.rejected.connect(self.reject)
 
         self.index()
 
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.form)
-        self.layout.addWidget(self.buttonBox)
+        self.layout.addWidget(self.buttons)
         self.layout.addWidget(self.table)
         self.setLayout(self.layout)
 
