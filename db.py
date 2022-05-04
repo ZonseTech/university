@@ -9,7 +9,7 @@ schema = "university"
 database_name = f"{schema}.db"
 
 # database table names
-departments = "department"  # stores db departments
+departments = "departments"  # stores db departments
 instructors = "instructors"  # stores db instructors
 
 # creating a connection to the database
